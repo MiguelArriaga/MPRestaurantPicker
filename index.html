@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restaurant Picker</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <!-- <script src="script.js"></script> -->
+  </head>
+  <body>
+    <h1>Restaurant Picker</h1>
+    <form id="restaurant-form"></form>
+    <br>
+    <button id="pick-button" type="button">Pick a Restaurant</button>
+    <p id="picked-restaurant"></p>
+
+    <script>
+      // List of restaurants
+      const restaurants = [
+        "Olive Garden",
+        "Red Lobster",
+        "Outback Steakhouse",
+        "The Cheesecake Factory",
+        "Chili's",
+        "Applebee's"
+      ];
+
+      // Get the form element
+      const form = document.getElementById("restaurant-form");
+      
+      // Get the button element
+      const pickButton = document.getElementById("pick-button");
+      
+      // function to generate form element
+      function generateForm() {
+        for (const restaurant of restaurants) {
+          const label = document.createElement("label");
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.name = "restaurant";
+          checkbox.value = restaurant;
+          checkbox.checked = true;
+          label.appendChild(checkbox);
+          label.appendChild(document.createTextNode(` ${restaurant}`));
+          form.appendChild(label);
+          form.appendChild(document.createElement("br"));
+        }
+      }
+      // generate form element
+      generateForm();
+      
+      // Add a click event listener to the button
+      pickButton.addEventListener("click", function(event) {
+        event.preventDefault(); 
+        // Get all the checkboxes
+        const checkboxes = document.querySelectorAll("input[name=restaurant]");
+        const selectedRestaurants = [];
+
+        // Iterate through the checkboxes and add the selected ones to the list
+        for (const checkbox of checkboxes) {
+          if (checkbox.checked) {
+            selectedRestaurants.push(checkbox.value);
+          }
+        }
+        // Pick a random restaurant from the selected list
+        const randomIndex = Math.floor(Math.random() * selectedRestaurants.length);
+        const pickedRestaurant = selectedRestaurants[randomIndex];
+
+        // Display the picked restaurant
+        const pickedRestaurantElement = document.getElementById("picked-restaurant");
+        pickedRestaurantElement.innerHTML = `Picked restaurant: ${pickedRestaurant}`;
+      });
+    </script>
+  </body>
+</html>
