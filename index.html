@@ -15,12 +15,16 @@
     <script>
       // List of restaurants
       const restaurants = [
-        "Olive Garden",
-        "Red Lobster",
-        "Outback Steakhouse",
-        "The Cheesecake Factory",
-        "Chili's",
-        "Applebee's"
+        "Slang (Moderno)",
+        "Sellva (Moderno)",
+        "Sushi Café (Sushi)",
+        "Al Garage (Italiano)",
+        "Cabaçinhas (Tradicional)",
+        "Dote (Francesinhs)",
+        "Cervejaria Liberdade (Fancy)",
+        "Pabe (Fancy)",
+        "Yakuza (Sushi Fancy)",
+        "JNcQUOI (Fancy)"
       ];
 
       // Get the form element
@@ -37,7 +41,7 @@
           checkbox.type = "checkbox";
           checkbox.name = "restaurant";
           checkbox.value = restaurant;
-          checkbox.checked = true;
+          checkbox.checked = false;
           label.appendChild(checkbox);
           label.appendChild(document.createTextNode(` ${restaurant}`));
           form.appendChild(label);
